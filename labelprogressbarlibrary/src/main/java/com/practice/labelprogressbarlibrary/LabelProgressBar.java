@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 public class LabelProgressBar extends FrameLayout {
     ProgressBar labelPb;
     TextView labelTv;
+    View labelLayout;
     float progress;
 
     public LabelProgressBar(@NonNull Context context) {
@@ -39,6 +41,7 @@ public class LabelProgressBar extends FrameLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.label_progress_bar, this, true);
         labelPb = (ProgressBar) findViewById(R.id.com_practice_labelProgressBar_labelPb);
         labelTv = (TextView) findViewById(R.id.com_practice_labelProgressBar_labelTv);
+        labelLayout = findViewById(R.id.com_practice_labelProgressBar_labelLayout);
     }
 
     @Override
@@ -59,7 +62,7 @@ public class LabelProgressBar extends FrameLayout {
 
     public void updateView() {
         labelPb.setProgress((int) (labelPb.getMax() * progress / 100f));
-        labelTv.setText(String.format("%.2f%%", progress));
-        labelTv.setTranslationX(progress / 100f * labelPb.getMeasuredWidth());
+        labelTv.setText((int) progress + "%");
+        labelLayout.setTranslationX((int) (progress / 100f * labelPb.getMeasuredWidth()));
     }
 }

@@ -7,10 +7,12 @@ import android.widget.Button;
 
 import com.practice.labelprogressbarlibrary.LabelProgressBar;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     LabelProgressBar labelPb;
     Button actionBtn;
-
+Random random=new Random();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         actionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                labelPb.setProgress(19.01f);
+                labelPb.setProgress(random.nextFloat()*100);
                 labelPb.setVisibility(View.VISIBLE);
             }
         });
